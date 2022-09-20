@@ -24,21 +24,17 @@ const Sponsor = (props) => {
 const Sponsors = () => {
 	const [sponsorText] = useStaticElement("sponsor") 
 	return <Section container placeholder id="tamogatok">
-		<Title>Az IOK 2022 <span className="highlight">TÁMOGATÓI</span></Title>
+		<Title>Az EDUCATION:NEXT 2022 KONFERENCIA <span className="highlight">TÁMOGATÓI</span></Title>
 		<Text subtitle>
 			<Text description><StructuredText data={sponsorText}></StructuredText></Text>
 		</Text>
-		<h3>A rendezvény fő támogatói</h3>
+		<h3>A rendezvény fő támogatója</h3>
 		<div className="sponsor-grid main-sponsors">
-			<Sponsor image={microsoftLogo} link="https://microsoft.hu" />
 			<Sponsor image={telekomLogo} link="https://telekom.hu" />
 		</div>
 		<h3>Együttműködő partnerek</h3>
 		<div className="sponsor-grid partner-sponsors">
-			<Sponsor image={ciscoLogo} link="http://cisco.hu" />
-			<Sponsor image={pannonLogo} link="https://mik.uni-pannon.hu/" />
-			<Sponsor image={eltetokLogo} className="elte-tok" link="https://www.tok.elte.hu/" />
-			<Sponsor image={netAcadLogo} className="elte-tok" link="https://netacad.com/" />
+
 			
 		</div>
 	</Section>

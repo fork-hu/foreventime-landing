@@ -1,6 +1,7 @@
 import { useQuerySubscription } from "react-datocms";
 
-const token = "3331fc3477e7df4b7cb85836c2a684"
+const token = "10b039e5d1ce9e04fb646d379aa92e" // process.env.DATO_API_TOKEN // education:next FrontEnd
+//const token = "3331fc3477e7df4b7cb85836c2a684" IOK-landing
 
 export const useStaticElement = (staticTextField, isStructuredText = true) => {
     const valueProperty = isStructuredText ? "{value }" : "";

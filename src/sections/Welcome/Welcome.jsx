@@ -5,8 +5,8 @@ import Ticket from "../../icons/Ticket";
 import Location from "../../icons/Location";
 import Button from "../../components/Button/Button";
 import Section from "../../components/Section/Section";
-import WelcomeImage from "../../assets/img/welcome-img.png";
-import WelcomeImageMobile from "../../assets/img/welcome-img-mobile.png";
+import WelcomeImage from "../../assets/img/welcome-img-edtech.png";
+import WelcomeImageMobile from "../../assets/img/welcome-img-edtech.jpg";
 import "./Welcome.scss";
 import Fade from "react-reveal/Fade"
 import { StructuredText  } from "react-datocms"
@@ -48,7 +48,7 @@ const calculateCountdown = (target) => {
 };
 
 const Welcome = () => {
-    const target = useMemo(() => new Date("2022-03-19T09:00:00"), []);
+    const target = useMemo(() => new Date("2022-10-21T09:00:00"), []);
     const [countdown, setCountdown] = useState({});
 	const [welcomeText] = useStaticElement("welcome")
     useEffect(() => {
@@ -95,7 +95,7 @@ const Welcome = () => {
                     </Fade>
                     <Fade top delay={400}>
                         <h1>
-                            Informatikai Oktatási Konferencia{" "}
+                            EDUCATION:NEXT konferencia{" "}
                             <span className="highlight">2022</span>
                         </h1>
                     </Fade>

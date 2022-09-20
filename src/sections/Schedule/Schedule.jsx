@@ -263,11 +263,11 @@ const Schedule = (props) => {
 						setOpenedScheduleItem={setOpenedScheduleItem}
 					/>
 				
-					<BreakoutSessionsSchedule
+{/* 					<BreakoutSessionsSchedule
 						breakoutSessionStages={allStages?.slice(1)}
 						openedScheduleItem={openedScheduleItem}
 						setOpenedScheduleItem={setOpenedScheduleItem}
-					/>
+					/> */}
 				</>
 			)}
         </Section>
