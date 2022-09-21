@@ -49,14 +49,14 @@ const Registration = (props) => {
 		const client = new SiteClient(context.apiKey)
 		try {
 			await client.items.create({
-				itemType: '1843571',
+				itemType: '94458',
 				name,
 				email,
 				workplace,
 				phone,
 				city,
 				newsletter,
-				onsite: false,
+				onsite,
 				stage: stage || null,
 				vipCode: vipCode || null
 			})
@@ -124,7 +124,7 @@ const Registration = (props) => {
 			<label className="form-label" htmlFor="city-field">Település*</label>
 			<input id="city-field" className="form-control" value={city} onChange={e => setCity(e.target.value)} autoComplete="address-level2" required/>
 
-			{/* <label className="form-label">Jelentkezés személyes részvételre</label>
+			<label className="form-label">Jelentkezés személyes részvételre</label>
 			<div className="" style={{padding: '0.8rem', border: '1px solid #ced4da', borderRadius: '0.25rem'}}>
 				<StructuredText data={vipCode ? registrationFormatVipText : registrationFormatText} />
 				<div className="form-check">
@@ -133,7 +133,7 @@ const Registration = (props) => {
 						{registrationFormatCheckboxText}
 					</label>
 				</div>
-				{ onsite && 
+{/* 				{ onsite && 
 					<>
 						<label className="form-label  mt-4">Melyik délutáni szekción szeretnél részt venni?*</label>
 						<select className="form-select" required={onsite} value={stage} onChange={e => setStage(e.target.value)}>
@@ -141,14 +141,14 @@ const Registration = (props) => {
 							{ allStages?.slice(1).slice(0,-1).map((stage, index) => <option key={index} value={stage.id}>{stage.name}</option>) }
 						</select>
 					</>
-				}
-			</div> */}
-			<div className="form-check mb-4 mt-4">
+				} */}
+			</div>
+{/* 			<div className="form-check mb-4 mt-4">
 				<input className="form-check-input" type="checkbox" name="newsletter" id="newsletter-field" checked={newsletter} onChange={e => setNewsletter(e.target.checked)}/>
 				<label className="form-check-label" htmlFor="newsletter-field">
 					Szeretnék emailben értesülni az InfoTanár Mentor programmal kapcsolatos információkról
 				</label>
-			</div>
+			</div> */}
 			<div className="form-check mb-4 mt-4">
 				<input className="form-check-input" type="checkbox" id="toc-field" required />
 				<label className="form-check-label" htmlFor="toc-field">

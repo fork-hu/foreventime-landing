@@ -10,7 +10,7 @@ function App() {
 
 	return (
 		<AppContext.Provider 
-			value={{apiKey: "20bfbb74097b060d8cfbfd74a60413"}}
+			value={{apiKey: "104fd5dcbf41571ac018bb648c6ed2"}}
 		>
 			<LandingPage />
 			
