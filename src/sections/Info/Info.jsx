@@ -13,6 +13,10 @@ import { useStaticElement } from '../../tools/datoCmsTools'
 const Info = () => {
 	const [infoText1] = useStaticElement("info1") 
 	const [infoText2] = useStaticElement("info2") 
+	const [infoBubbleText1] = useStaticElement("infoBubbleText1", false)
+	const [infoBubbleText2] = useStaticElement("infoBubbleText2", false)
+	const [infoBubbleText3] = useStaticElement("infoBubbleText3", false)
+	const [infoBubbleText4] = useStaticElement("infoBubbleText4", false)
 	
 	return <Section container placeholder id="info-section">
 		<Title>Legyünk <span className="highlight">EGYÜTT</span>!</Title>
@@ -21,10 +25,10 @@ const Info = () => {
 		<div className='row'>
 				<div className='col-md-6 col-12'>
 					<div className='bubbles'>
-						<Bubble icon color='primary' size='extra-large' title={<LightBulb />} subtitle="Inspiráció" corners={['bottom-right']} />
-						<Bubble icon color='light' size="large" title={<Networking />} subtitle="Közösségi kapcsolatok" corners={['bottom-left']} />
-						<Bubble icon color='light' size="large" title={<Star />} subtitle="Versenyképes oktatás" corners={['top-right']} />
-						<Bubble icon color='light' size="large" title={<Tools />} subtitle="Piacképes tudás" corners={['top-left']} />
+						<Bubble icon color='primary' size='extra-large' title={<LightBulb />} subtitle={infoBubbleText1} corners={['bottom-right']} />
+						<Bubble icon color='light' size="large" title={<Networking />} subtitle={infoBubbleText2} corners={['bottom-left']} />
+						<Bubble icon color='light' size="large" title={<Star />} subtitle={infoBubbleText3} corners={['top-right']} />
+						<Bubble icon color='light' size="large" title={<Tools />} subtitle={infoBubbleText4} corners={['top-left']} />
 					</div>
 				</div>
 				<div className='col-md-6 col-12'>
