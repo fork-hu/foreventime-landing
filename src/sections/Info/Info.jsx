@@ -17,9 +17,11 @@ const Info = () => {
 	const [infoBubbleText2] = useStaticElement("infoBubbleText2", false)
 	const [infoBubbleText3] = useStaticElement("infoBubbleText3", false)
 	const [infoBubbleText4] = useStaticElement("infoBubbleText4", false)
+	const [infoTitlePart1] = useStaticElement("infoTitlePart1", false)
+    const [infoTitlePart2] = useStaticElement("infoTitlePart2", false)
 	
 	return <Section container placeholder id="info-section">
-		<Title>Legyünk <span className="highlight">EGYÜTT</span>!</Title>
+		<Title>{infoTitlePart1} <span className="highlight">{infoTitlePart2}</span></Title>
 		<Text subtitle><StructuredText data={infoText1}/></Text>
 
 		<div className='row'>

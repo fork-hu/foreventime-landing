@@ -48,9 +48,13 @@ const calculateCountdown = (target) => {
 };
 
 const Welcome = () => {
+    
     const target = useMemo(() => new Date("2022-10-21T09:00:00"), []);
-    const [countdown, setCountdown] = useState({});
+    const [countdown, setCountdown] = useState({})
+    const [welcomeTitlePart1] = useStaticElement("welcomeTitlePart1", false)
+    const [welcomeTitlePart2] = useStaticElement("welcomeTitlePart2", false)
 	const [welcomeText] = useStaticElement("welcome")
+
     useEffect(() => {
         setCountdown(calculateCountdown(target));
         const interval = window.setInterval(() => {
@@ -95,8 +99,8 @@ const Welcome = () => {
                     </Fade>
                     <Fade top delay={400}>
                         <h1>
-                            EDUCATION:NEXT konferencia{" "}
-                            <span className="highlight">2022</span>
+                            {welcomeTitlePart1}{" "}
+                            <span className="highlight">{welcomeTitlePart2}</span>
                         </h1>
                     </Fade>
                     <Fade top delay={440}>

@@ -5,17 +5,25 @@ import Phone from '../icons/Phone'
 import Mail from '../icons/Mail'
 import Web from '../icons/Web'
 import Text from "../components/Text/Text"
+import { useStaticElement } from '../tools/datoCmsTools'
 
 const Footer = () => {
+	const [contactAddress] = useStaticElement("contactAddress", false)
+	const [contactPhone] = useStaticElement("contactPhone", false)
+	const [contactEmail] = useStaticElement("contactEmail", false)
+	const [contactWeb] = useStaticElement("contactWeb", false)
+
 	return <footer>
 		<div className="container">
 			<div className='links'>
 				<div className='title'>Kapcsolat</div>
 				<div className='contact'>
-					<Location />Budapest, 1062, Andrássy út 66.
-					<Phone/>(1) 123-4567
-					<Mail /><div><a href="mailto:info@edtech.hu">info@edtech.hu</a></div>
-					<Web /><div><a target="_blank" rel="noopener noreferrer" href="https://edtech.hu">edtech.hu</a></div>
+
+					{contactAddress && <><Location /> {contactAddress}</>}
+					{contactPhone && <><Phone /> {contactPhone}</>}
+					{contactEmail && <><Mail /> <a href={`mailto:${contactEmail}`}>{contactEmail}</a></>}
+					{contactWeb && <><Web /> <a target="_blank" rel="noopener noreferrer" href={contactWeb}>{contactWeb}</a></>}
+
 				</div>
 
 

@@ -1,7 +1,12 @@
 import { useQuerySubscription } from "react-datocms";
+import { isConstructorDeclaration } from "typescript";
+
 
 const token = "10b039e5d1ce9e04fb646d379aa92e" // process.env.DATO_API_TOKEN // education:next FrontEnd
-//const token = "3331fc3477e7df4b7cb85836c2a684" IOK-landing
+//const token = "3331fc3477e7df4b7cb85836c2a684" //IOK-landing
+
+
+    
 
 export const useStaticElement = (staticTextField, isStructuredText = true) => {
     const valueProperty = isStructuredText ? "{value }" : "";
@@ -35,7 +40,12 @@ export const useAllElements = (model) => {
             _allStagesMeta {
                 count
             }
-        `
+        `,
+        sponsors: `
+          _allSponsorsMeta {
+              count
+          }
+      `,
     }
     const DATOCMS_QUERY_RECORD_COUNT = `
         query AppQuery {
@@ -80,6 +90,18 @@ export const useAllElements = (model) => {
                 }
             }        
         `,
+        sponsors: `
+            allSponsorCategories {
+              name
+              sponsor {
+                name
+                url
+                logo {
+                  url
+                }
+              }
+            }
+          `
     };
     const DATOCMS_QUERY = `
         query AppQuery {

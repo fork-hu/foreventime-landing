@@ -20,21 +20,21 @@ const Overlay = () => {
 					<div className='infobox'>
 						<Mic />
 						<div>
-							<div className='title'>21</div>
+							<div className='title'>11</div>
 							<div className='subtitle'>előadás</div>
 						</div>
 					</div>
 					<div className='infobox'>
 						<Person />
 						<div>
-							<div className='title'>27</div>
+							<div className='title'>16</div>
 							<div className='subtitle'>előadó</div>
 						</div>
 					</div>
 					<div className='infobox'>
 						<Coffee />
 						<div>
-							<div className='title'>150</div>
+							<div className='title'>200</div>
 							<div className='subtitle'>helyszíni férőhely</div>
 						</div>
 					</div>

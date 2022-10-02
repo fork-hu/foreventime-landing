@@ -8,35 +8,46 @@ import ciscoLogo from "../../assets/img/sponsors/cisco2.png"
 import pannonLogo from "../../assets/img/sponsors/pannon-mik2.png"
 import eltetokLogo from "../../assets/img/sponsors/elte-tok2.png"
 import netAcadLogo from "../../assets/img/sponsors/netacad2.png"
-import { useStaticElement } from '../../tools/datoCmsTools'
+import { useStaticElement, useAllElements } from '../../tools/datoCmsTools'
 import { StructuredText  } from "react-datocms"
 
 const Sponsor = (props) => {
 	return (
 		<div className="sponsor">
+			{props.link ?
 			<a href={props.link} target="_blank" rel="noopener noreferrer"  >
-					<img src={props.image} alt={props.name} {...props}/>
+				<img src={props.image} alt={props.name} {...props}/>
 			</a>
+			:
+			<img src={props.image} alt={props.name} {...props}/>} 
 		</div>
 	)
 }
 
 const Sponsors = () => {
 	const [sponsorText] = useStaticElement("sponsor") 
+	const [sponsorTitlePart1] = useStaticElement("sponsorTitlePart1", false)
+    const [sponsorTitlePart2] = useStaticElement("sponsorTitlePart2", false)
+	const [allSponsorCategories] = useAllElements("sponsors")
+	console.log("allSponsorCategories", allSponsorCategories)
 	return <Section container placeholder id="tamogatok">
-		<Title>Az EDUCATION:NEXT 2022 KONFERENCIA <span className="highlight">TÁMOGATÓI</span></Title>
+		<Title>{sponsorTitlePart1} <span className="highlight">{sponsorTitlePart2}</span></Title>
 		<Text subtitle>
 			<Text description><StructuredText data={sponsorText}></StructuredText></Text>
 		</Text>
-		<h3>A rendezvény fő támogatója</h3>
-		<div className="sponsor-grid main-sponsors">
-			<Sponsor image={telekomLogo} link="https://telekom.hu" />
-		</div>
-		<h3>Együttműködő partnerek</h3>
-		<div className="sponsor-grid partner-sponsors">
+		{allSponsorCategories && allSponsorCategories.map((category, index) => (
+			<>
+				<h3 key={index} className="sponsor-category">{category.name}</h3>
+				<ul class="logo-gallery">
+					{category.sponsor && category.sponsor.map((sponsor, index) => (
+						<li>
+							<Sponsor key={index} image={sponsor.logo.url} link={sponsor.url} name={sponsor.name} />
+						</li>
+					))}
+				</ul>
+			</>
+		))}
 
-			
-		</div>
 	</Section>
 }
 
