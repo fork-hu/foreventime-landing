@@ -13,12 +13,10 @@ import { useStaticElement } from '../../tools/datoCmsTools'
 
 
 const Overlay = () => {
-	const [registartionType] = useStaticElement('registrationType', false)
-	const contentClass = 'content' + (registartionType === 'onsite' ? ' no-online' : '')
-	console.log("registartionTyp", registartionType, contentClass)
-	console.log("registartionTyp", registartionType, contentClass)
-	console.log("registartionTyp", registartionType, contentClass)
-	console.log("registartionTyp", registartionType, contentClass)
+	const [registrationOnline] = useStaticElement('registrationOnline', false)
+			
+	const contentClass = 'content' + (!(registrationOnline) ? ' no-online' : '')
+
 	return (
 		<div id="overlay">
 			<div className="bg bg-1"></div>
@@ -46,7 +44,7 @@ const Overlay = () => {
 							<div className='subtitle'>helyszíni férőhely</div>
 						</div>
 					</div>
-					{(registartionType === 'online' ||  registartionType === 'hybrid') && 
+					{registrationOnline  && 
 						<div className='infobox'>
 							<Book />
 							<div>

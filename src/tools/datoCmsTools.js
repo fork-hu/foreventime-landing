@@ -19,13 +19,14 @@ export const useStaticElement = (staticTextField, isStructuredText = true, isAss
                 ${assetProperty}
 			}
 		}`;
+
     const { error, data } = useQuerySubscription({
         enabled: true,
         query: DATOCMS_QUERY,
         token,
     });
     return [
-        data?.staticelement[staticTextField].value ??
+        data?.staticelement[staticTextField]?.value ??
             data?.staticelement[staticTextField],
     ];
 };

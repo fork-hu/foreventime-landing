@@ -29,7 +29,6 @@ const Sponsors = () => {
 	const [sponsorTitlePart1] = useStaticElement("sponsorTitlePart1", false)
     const [sponsorTitlePart2] = useStaticElement("sponsorTitlePart2", false)
 	const [allSponsorCategories] = useAllElements("sponsors")
-	console.log("allSponsorCategories", allSponsorCategories)
 	return <Section container placeholder id="tamogatok">
 		<Title>{sponsorTitlePart1} <span className="highlight">{sponsorTitlePart2}</span></Title>
 		<Text subtitle>
