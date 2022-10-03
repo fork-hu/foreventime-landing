@@ -85,7 +85,7 @@
 	&.primary {
 		border: 0;
 		background-color: $primary;
-		box-shadow: 0px 16px 40px rgba(71, 204, 212, 0.4);
+		box-shadow: 0px 16px 40px $primary-shadow;
 		.title, .subtitle {
 			color: $light;
 		}

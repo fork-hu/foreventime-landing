@@ -8,13 +8,15 @@ const token = "10b039e5d1ce9e04fb646d379aa92e" // process.env.DATO_API_TOKEN // 
 
     
 
-export const useStaticElement = (staticTextField, isStructuredText = true) => {
+export const useStaticElement = (staticTextField, isStructuredText = true, isAsset=false) => {
     const valueProperty = isStructuredText ? "{value }" : "";
+    const assetProperty = isAsset ? "{url }" : "";
     const DATOCMS_QUERY = `
 		query AppQuery {
 			staticelement  {
 				${staticTextField} 
 				${valueProperty}
+                ${assetProperty}
 			}
 		}`;
     const { error, data } = useQuerySubscription({
@@ -22,7 +24,6 @@ export const useStaticElement = (staticTextField, isStructuredText = true) => {
         query: DATOCMS_QUERY,
         token,
     });
-
     return [
         data?.staticelement[staticTextField].value ??
             data?.staticelement[staticTextField],
@@ -53,10 +54,11 @@ export const useAllElements = (model) => {
         }`
 
     const  [dataCount] = useQuery(DATOCMS_QUERY_RECORD_COUNT)
-
+    
     const modelQuery = {
+        // orderBy: [name_ASC]
         presenters: `
-            allSpeakers(orderBy: [name_ASC], first: ${dataCount?.count ?? 0} ) 
+            allSpeakers(, first: ${dataCount?.count ?? 0} ) 
                 {
                     name
                     slug

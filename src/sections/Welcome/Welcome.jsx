@@ -5,7 +5,8 @@ import Ticket from "../../icons/Ticket";
 import Location from "../../icons/Location";
 import Button from "../../components/Button/Button";
 import Section from "../../components/Section/Section";
-import WelcomeImage from "../../assets/img/welcome-img-edtech.png";
+import WelcomeImage from "../../assets/img/edunext_welcome_image2.png";
+
 import WelcomeImageMobile from "../../assets/img/welcome-img-edtech.jpg";
 import "./Welcome.scss";
 import Fade from "react-reveal/Fade"

@@ -5,6 +5,7 @@ import Ticket from '../icons/Ticket'
 import useScrollPosition from '@react-hook/window-scroll'
 import { useState } from 'react'
 import Fade from 'react-reveal/Fade'
+import { useStaticElement } from '../tools/datoCmsTools'
 
 
 const HamburgerMenu = (props) => {
@@ -43,12 +44,15 @@ const Header = () => {
 
 
 	const [menuOpen, setMenuOpen] = useState(false)
+	const [siteLogo] = useStaticElement('siteLogo', false, true)
+	const [siteTitle] = useStaticElement('siteTitle', false)
+	
 
 	return <header className={`${scrollY < limit ? 'transparent' : ''}`}>
 		<div className="container">
 			<Fade top delay={900}>
-				<img src={BrandImg} alt="EDUCATION:NEXT" className="brand-image" />
-				<h1></h1>
+				<img src={siteLogo?.url} alt={siteTitle} className="brand-image" />
+				<h1>{siteTitle}</h1>
 				<Button href="#regisztracio"><Ticket />Regisztráció</Button>
 				<div className="hamburger-toggle" onClick={() => setMenuOpen(true)}>
 					<div className="bar"></div>
