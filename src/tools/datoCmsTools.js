@@ -1,78 +1,32 @@
 import { useQuerySubscription } from "react-datocms";
 import { isConstructorDeclaration } from "typescript";
+import { useState, useEffect, useMemo } from "react";
 
 
 const token = "10b039e5d1ce9e04fb646d379aa92e" // process.env.DATO_API_TOKEN // education:next FrontEnd
 //const token = "3331fc3477e7df4b7cb85836c2a684" //IOK-landing
 
-
-    
-
-export const useStaticElement = (staticTextField, isStructuredText = true, isAsset=false) => {
-    const valueProperty = isStructuredText ? "{value }" : "";
-    const assetProperty = isAsset ? "{url }" : "";
-    const DATOCMS_QUERY = `
-		query AppQuery {
-			staticelement  {
-				${staticTextField} 
-				${valueProperty}
-                ${assetProperty}
-			}
-		}`;
-
-    const { error, data } = useQuerySubscription({
-        enabled: true,
-        query: DATOCMS_QUERY,
-        token,
-    });
-    return [
-        data?.staticelement[staticTextField]?.value ??
-            data?.staticelement[staticTextField],
-    ];
-};
-
-export const useAllElements = (model) => {
-    const modelQueryRecordCount = {
-        presenters: `        
-            _allSpeakersMeta {
-              count
-            }
-        `,
-        stages: `
-            _allStagesMeta {
-                count
-            }
-        `,
-        sponsors: `
-          _allSponsorsMeta {
-              count
-          }
-      `,
+export const useStore = () => {
+    const initialValues = {
+        stages : [],
+        presenters : [],
+        sponsorCategories : [],
+        staticelement: {},
     }
-    const DATOCMS_QUERY_RECORD_COUNT = `
-        query AppQuery {
-            ${modelQueryRecordCount[model]} 
-        }`
-
-    const  [dataCount] = useQuery(DATOCMS_QUERY_RECORD_COUNT)
-    
-    const modelQuery = {
-        // orderBy: [name_ASC]
-        presenters: `
-            allSpeakers(, first: ${dataCount?.count ?? 0} ) 
-                {
-                    name
-                    slug
-                    highlighted
-                    title
-                    company
-                    image {
-                        url
-                    }
+    const query = 
+        `{	
+            allSpeakers(, first: 100 ) 
+            {
+                name
+                slug
+                highlighted
+                title
+                company
+                image {
+                    url
                 }
-        `,
-        stages: `
-            allStages(orderBy: [order_ASC]) {
+            }
+            allStages(orderBy: [order_ASC], first: 100) {
                 id
                 name
                 online
@@ -91,80 +45,155 @@ export const useAllElements = (model) => {
                         }
                     }
                 }
-            }        
-        `,
-        sponsors: `
-            allSponsorCategories {
-              name
-              sponsor {
+            }
+            allSponsorCategories(, first: 100 ) {
                 name
-                url
-                logo {
+                sponsor {
+                    name
+                    url
+                    logo {
+                    url
+                    }
+                }
+            }
+            staticelement {
+                contactAddress
+                contactEmail
+                contactPhone
+                contactWeb
+                createdAt
+                id
+                info1 {
+                  value
+                }
+                info2 {
+                  value
+                }
+                infoBubbleText1
+                infoBubbleText2
+                infoBubbleText3
+                infoBubbleText4
+                infoTitlePart1
+                infoTitlePart2
+                map1 {
+                  value
+                }
+                map2 {
+                  value
+                }
+                registration {
+                  value
+                }
+                registrationFeedbackCancel {
+                  value
+                }
+                registrationFeedbackError {
+                  value
+                }
+                registrationFeedbackTransaltion {
+                  value
+                }
+                registrationFeedbackWithoutTranslation {
+                  value
+                }
+                registrationFormat {
+                  value
+                }
+                registrationFormatCheckbox
+                registrationFormatVip {
+                  value
+                }
+                registrationInfoHybrid {
+                  value
+                }
+                registrationInfoOnlineOnly {
+                  value
+                }
+                registrationInfoOnsiteOnly {
+                  value
+                }
+                registrationOnline
+                registrationOnsite
+                registrationSuccess {
+                  value
+                }
+                siteLogo {
                   url
                 }
+                siteTitle
+                speaker {
+                  value
+                }
+                sponsor {
+                  value
+                }
+                sponsorTitlePart1
+                sponsorTitlePart2
+                talk {
+                  value
+                }
+                welcome {
+                  value
+                }
+                welcomeTitlePart1
+                welcomeTitlePart2
               }
-            }
-          `
-    };
-    const DATOCMS_QUERY = `
-        query AppQuery {
-            ${modelQuery[model]} 
-        }`
+          }`
+    const [data, error] = useQuery2(query, initialValues)
+    const {allStages, allSpeakers, allSponsorCategories, staticelement} = data
 
-    const  [data] = useQuery(DATOCMS_QUERY)
+    const store = useMemo(() => (
+        {
+            stages: allStages,
+            presenters: allSpeakers,
+            sponsorCategories: allSponsorCategories,
+            staticelement: staticelement
+        }
+    ), [allStages, allSpeakers, allSponsorCategories, staticelement])
 
-    //console.log("dataCount", dataCount)
-    //console.log("DATOCMS_QUERY", DATOCMS_QUERY)
-    return [data]
-};
-
-const useQuery = (query) => {
-    const { error, data } = useQuerySubscription({
-        query,
-        token
-    });
-
-    //if (error) console.log("error", error, query)
-    return [(data) && data[Object.keys(data)[0]]]
-} 
-
-export const useStatQuery = (statType) => {
+    if (error) console.log("error", error)
+    return store
+}
     
-    let query=`
-        query onsiteQuery {
-            _allRegistrationsMeta(filter: {onsite: {eq: "true"}}){
-            count
-            }
-        }
-    `
-    const { error: onsiteError, data: onsite } = useQuerySubscription({
-        query,
-        token
-    });
+export const useStaticElement = (staticTextField, isStructuredText = true, isAsset=false) => {
+    const store = useStore()
+    if (!(store)) return []
 
-    query=`
-        query onsiteQuery {
-            _allRegistrationsMeta(filter: {onsite: {eq: "false"}}){
-            count
-            }
-        }
-`
-    const { error: onlineError, data: online } = useQuerySubscription({
-        query,
-        token
-    });
-
-    query=`
-    query onsiteQuery {
-        _allRegistrationsMeta {
-        count
-        }
+    const {staticelement} = store
+    //console.log(staticTextField)
+    if (!(staticelement)) return []
+    const field = staticelement && staticelement[staticTextField]
+    //console.log("field", field)
+    if (isStructuredText) {
+        return [field?.value]
     }
-`
-    const { error: allError, data: all } = useQuerySubscription({
-        query,
-        token
-    });
+    if (isAsset) {
+        console.log("field", field)
+        return [field?.url]
+    }
+    return [field]
 
-    return [onsite, online, all]
-} 
+}
+
+export const useAllElements = (model) => {
+    const store = useStore()
+    if (!(store)) return []
+    console.log(model, store[model])
+    return [store[model]]
+}
+
+
+const useQuery2 = (query, initialValue) => {
+	const [result, setResult] = useState(initialValue)
+	const { data, error } = useQuerySubscription({
+		query,
+		token
+	})
+	useEffect(() => {
+		if (data) setResult(Object.keys(data).length === 1 ? data[Object.keys(data)[0]] : data)
+	}, [data])
+	useEffect(() => {
+		setResult(initialValue)
+	}, [query])
+	return [result, error]
+}

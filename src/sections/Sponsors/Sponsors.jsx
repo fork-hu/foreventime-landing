@@ -28,13 +28,13 @@ const Sponsors = () => {
 	const [sponsorText] = useStaticElement("sponsor") 
 	const [sponsorTitlePart1] = useStaticElement("sponsorTitlePart1", false)
     const [sponsorTitlePart2] = useStaticElement("sponsorTitlePart2", false)
-	const [allSponsorCategories] = useAllElements("sponsors")
+	const [sponsorCategories] = useAllElements("sponsorCategories")
 	return <Section container placeholder id="tamogatok">
 		<Title>{sponsorTitlePart1} <span className="highlight">{sponsorTitlePart2}</span></Title>
 		<Text subtitle>
 			<Text description><StructuredText data={sponsorText}></StructuredText></Text>
 		</Text>
-		{allSponsorCategories && allSponsorCategories.map((category, index) => (
+		{sponsorCategories && sponsorCategories.map((category, index) => (
 			<>
 				<h3 key={index} className="sponsor-category">{category.name}</h3>
 				<ul class="logo-gallery">

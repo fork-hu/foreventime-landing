@@ -49,8 +49,6 @@ const Registration = (props) => {
 	const registrationOnsiteOnly = registrationOnsite && !registrationOnline
 	const registrationHybrid = registrationOnsite && registrationOnline
 
-	console.log("registrationOnsiteOnly", registrationOnsiteOnly)
-
 	const vipCode = (new URLSearchParams(window.location.search)).get('q') || null
 	const onSubmit = async (e) => {
 		e.preventDefault()
@@ -70,7 +68,6 @@ const Registration = (props) => {
 			stage: stage || null,
 			vipCode: vipCode || null
 		}
-		console.log("registrationData", registrationData)
 		try {
 			await client.items.create(registrationData)
 			setSuccess(true)
