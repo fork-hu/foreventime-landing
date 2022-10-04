@@ -25,7 +25,7 @@ const Info = () => {
 		<Text subtitle><StructuredText data={infoText1}/></Text>
 
 		<div className='row'>
-				<div className='col-md-6 col-12'>
+				<div className='col-lg-6 col-12'>
 					<div className='bubbles'>
 						<Bubble icon color='primary' size='extra-large' title={<LightBulb />} subtitle={infoBubbleText1} corners={['bottom-right']} />
 						<Bubble icon color='light' size="large" title={<Networking />} subtitle={infoBubbleText2} corners={['bottom-left']} />
@@ -33,7 +33,7 @@ const Info = () => {
 						<Bubble icon color='light' size="large" title={<Tools />} subtitle={infoBubbleText4} corners={['top-left']} />
 					</div>
 				</div>
-				<div className='col-md-6 col-12'>
+				<div className='col-lg-6 col-12'>
 					<Title subtitle>Töltődj fel a legfrisebb információkkal!</Title>
 					<Text>
 						<StructuredText data={infoText2}/>

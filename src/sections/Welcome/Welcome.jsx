@@ -68,7 +68,7 @@ const Welcome = () => {
     return (
         <Section container placeholder id="welcome">
             <div className="row">
-                <div className="col-md-7 col-12">
+                <div className="col-lg-7 col-12">
                     <div className="bubbles">
                         <Fade left delay={200}>
                             <Bubble
@@ -91,13 +91,13 @@ const Welcome = () => {
                     <Fade top delay={300}>
                         <Overview date={target} />
                     </Fade>
-                    <Fade left delay={350}>
+{/*                     <Fade left delay={350}>
                         <img
                             src={WelcomeImageMobile}
                             alt="IOK 2022"
                             className="welcome-image-mobile"
                         />
-                    </Fade>
+                    </Fade> */}
                     <Fade top delay={400}>
                         <h1>
                             {welcomeTitlePart1}{" "}

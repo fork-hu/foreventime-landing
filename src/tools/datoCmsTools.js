@@ -1,18 +1,18 @@
 import { useQuerySubscription } from "react-datocms";
 import { isConstructorDeclaration } from "typescript";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, createContext, useContext} from "react";
 
 
 const token = "10b039e5d1ce9e04fb646d379aa92e" // process.env.DATO_API_TOKEN // education:next FrontEnd
+export const storeInitialValues = {
+  stages : [],
+  presenters : [],
+  sponsorCategories : [],
+  staticelement: {},
+}
 //const token = "3331fc3477e7df4b7cb85836c2a684" //IOK-landing
 
-export const useStore = () => {
-    const initialValues = {
-        stages : [],
-        presenters : [],
-        sponsorCategories : [],
-        staticelement: {},
-    }
+export const useDato = () => {
     const query = 
         `{	
             allSpeakers(, first: 100 ) 
@@ -139,36 +139,40 @@ export const useStore = () => {
                 welcomeTitlePart2
               }
           }`
-    const [data, error] = useQuery2(query, initialValues)
+    const [data, error] = useQuery(query, storeInitialValues)
     const {allStages, allSpeakers, allSponsorCategories, staticelement} = data
 
-    const store = useMemo(() => (
+    const storeData =
         {
             stages: allStages,
             presenters: allSpeakers,
             sponsorCategories: allSponsorCategories,
             staticelement: staticelement
         }
-    ), [allStages, allSpeakers, allSponsorCategories, staticelement])
+    
 
     if (error) console.log("error", error)
-    return store
+    return storeData
 }
-    
+
+const useStore = () => {
+  const store = useContext(StoreContext)
+  return store
+}
+
+export const StoreContext = createContext(storeInitialValues)
+   
 export const useStaticElement = (staticTextField, isStructuredText = true, isAsset=false) => {
     const store = useStore()
     if (!(store)) return []
 
     const {staticelement} = store
-    //console.log(staticTextField)
     if (!(staticelement)) return []
     const field = staticelement && staticelement[staticTextField]
-    //console.log("field", field)
     if (isStructuredText) {
         return [field?.value]
     }
     if (isAsset) {
-        console.log("field", field)
         return [field?.url]
     }
     return [field]
@@ -178,12 +182,11 @@ export const useStaticElement = (staticTextField, isStructuredText = true, isAss
 export const useAllElements = (model) => {
     const store = useStore()
     if (!(store)) return []
-    console.log(model, store[model])
     return [store[model]]
 }
 
 
-const useQuery2 = (query, initialValue) => {
+const useQuery = (query, initialValue) => {
 	const [result, setResult] = useState(initialValue)
 	const { data, error } = useQuerySubscription({
 		query,
