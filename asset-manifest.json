@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/static/css/main.ce2fefc6.css",
-    "main.js": "/static/js/main.5c9e44c0.js",
+    "main.css": "/static/css/main.69dff27c.css",
+    "main.js": "/static/js/main.e8e1a472.js",
     "static/media/map.png": "/static/media/map.d19709e40e95c55db50c.png",
     "static/media/welcome-img-edtech.jpg": "/static/media/welcome-img-edtech.ddc36d26eff1c8118945.jpg",
     "static/media/netacad2.png": "/static/media/netacad2.ddb48cec1704a4c173bd.png",
     "static/media/pannon-mik2.png": "/static/media/pannon-mik2.3544fe72a4bcfee7df2e.png",
     "static/media/edunext_welcome_image2.png": "/static/media/edunext_welcome_image2.58e46ebe69acf3eda209.png",
     "index.html": "/index.html",
-    "main.ce2fefc6.css.map": "/static/css/main.ce2fefc6.css.map",
-    "main.5c9e44c0.js.map": "/static/js/main.5c9e44c0.js.map"
+    "main.69dff27c.css.map": "/static/css/main.69dff27c.css.map",
+    "main.e8e1a472.js.map": "/static/js/main.e8e1a472.js.map"
   },
   "entrypoints": [
-    "static/css/main.ce2fefc6.css",
-    "static/js/main.5c9e44c0.js"
+    "static/css/main.69dff27c.css",
+    "static/js/main.e8e1a472.js"
   ]
 }
