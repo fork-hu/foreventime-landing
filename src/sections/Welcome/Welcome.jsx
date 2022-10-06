@@ -14,6 +14,8 @@ import { StructuredText  } from "react-datocms"
 import { useStaticElement } from '../../tools/datoCmsTools'
 
 const Overview = (props) => {
+    const [registrationOnline] = useStaticElement("registrationOnline", false)
+
     return (
         <div className="overview">
             <OverviewItem>
@@ -27,7 +29,7 @@ const Overview = (props) => {
             </OverviewItem>
             <OverviewItem>
                 <Location />
-                Budapest {/*|| (Online)*/}
+                {(registrationOnline) ? "(Budapest) || (Online)" : "Budapest"}
             </OverviewItem>
         </div>
     );
