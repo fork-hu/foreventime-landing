@@ -35,6 +35,7 @@ const Registration = (props) => {
 	const [name, setName] = useState('')
 	const [email, setEmail] = useState('')
 	const [workplace, setWorkplace] = useState('')
+	const [title, setTitle] = useState('')
 	const [phone, setPhone] = useState('')
 	const [city, setCity] = useState('')
 	const [newsletter, setNewsletter] = useState(false)
@@ -61,6 +62,7 @@ const Registration = (props) => {
 			name,
 			email,
 			workplace,
+			title,
 			phone,
 			city,
 			newsletter,
@@ -75,6 +77,7 @@ const Registration = (props) => {
 			setEmail('')
 			setName('')
 			setWorkplace('')
+			setTitle('')
 			setPhone('')
 			setCity('')
 			setNewsletter(false)
@@ -132,6 +135,9 @@ const Registration = (props) => {
 
 			<label className="form-label" htmlFor="workplace-field">Munkahely / Iskola *</label>
 			<input id="workplace-field" className="form-control" value={workplace} onChange={e => setWorkplace(e.target.value)} autoComplete="organization" required/>
+
+			<label className="form-label" htmlFor="title-field">Pozíció *</label>
+			<input id="title-field" className="form-control" value={title} onChange={e => setTitle(e.target.value)} autoComplete="title" required/>
 
 			<label className="form-label" htmlFor="city-field">Település*</label>
 			<input id="city-field" className="form-control" value={city} onChange={e => setCity(e.target.value)} autoComplete="address-level2" required/>
