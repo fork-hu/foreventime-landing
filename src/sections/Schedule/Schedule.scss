@@ -234,7 +234,7 @@
 				transition: all 0.1s ease-out;
 				&:not(.selected):hover {
 					background-color: rgba(255, 255, 255, 0.6);
-					color: adjust-color($color: $primary, $lightness: -10%)
+					color: $primary-light-10
 				}
 			}
 			.selector {
@@ -268,7 +268,7 @@
 			}
 			h4 {
 				font-weight: 700;
-				color: adjust-color($primary, $lightness: -7%);
+				color: $primary-light-7;
 				text-align: center;
 				font-size: 1.5rem;
 			}

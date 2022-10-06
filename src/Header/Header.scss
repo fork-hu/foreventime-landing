@@ -139,7 +139,7 @@ header {
 				transition: all 0.1s ease-out;
 				&:hover {
 					background-color: rgba(255, 255, 255, 0.6);
-					color: adjust-color($color: $primary, $lightness: -10%)
+					color: $primary-light-10
 				}
 			}
 		}

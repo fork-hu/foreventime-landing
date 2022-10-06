@@ -24,7 +24,7 @@
 	}
 	.form-check-input:checked {
 		background-color: $primary;
-		border-color: adjust-color($color: $primary, $lightness: -15%);
+		border-color: $primary-light-15;
 	}
 	.form-check-input:focus {
 		box-shadow: none;

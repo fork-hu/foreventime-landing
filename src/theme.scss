@@ -1,11 +1,32 @@
-$primary: #93c47d;
-$light: #fff;
-$dark: #000;
-$grey: #4F4F4F;
-$lightgrey: #BDBDBD;
-$bg-light: #fff;
-$bg-primary: #DFFFD8;
-$primary-shadow: rgba($primary, 0.5);
+:root {
+	--primary: #47CCD4;
+	--primary-light-10: #b0d4a0;
+	--primary-light-15: #bfdcb2;
+	--primary-light-7: #a7cf96;
+	--primary-alpha-20: #94c47d33;
+	--light: #fff;
+	--dark: #000;
+	--grey: #4F4F4F;
+	--lightgrey: #BDBDBD;
+	--bg-light: #fff;
+	--bg-primary: #DFFFD8;
+	--primary-shadow: rgba(var(--primary), 0.5);
+}
+
+
+$primary: var(--primary);
+$primary-light-10: var(--primary-light-10);
+$primary-light-15: var(--primary-light-15);
+$primary-light-7: var(--primary-light-7);
+$primary-alpha-20: var(--primary-alpha-20);
+
+$light: var(--light);
+$dark: var(--dark);
+$grey: var(--grey);
+$lightgrey: var(--lightgrey);
+$bg-light: var(--bg-light);
+$bg-primary: var(--bg-primary);
+$primary-shadow: var(--primary-shadow);
 
 /* $primary: #47CCD4;
 $light: #fff;

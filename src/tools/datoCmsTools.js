@@ -137,6 +137,7 @@ export const useDato = () => {
                 }
                 welcomeTitlePart1
                 welcomeTitlePart2
+                theme
               }
           }`
     const [data, error] = useQuery(query, storeInitialValues)
